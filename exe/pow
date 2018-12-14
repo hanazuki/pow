@@ -1,0 +1,3 @@
+#!/usr/bin/env ruby
+require 'pow/cli'
+Pow::Cli.start

@@ -1,0 +1,2 @@
+module Pow
+end

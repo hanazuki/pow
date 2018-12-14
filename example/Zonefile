@@ -1,0 +1,51 @@
+# -*- ruby -*-
+
+server_id 'localhost'
+
+zone 'example.com.' do
+  dnssec true
+  nsec3param '1 0 100 c14051809fa4331b83caa893496835bb'
+  nsec3narrow true
+
+  meta 'PUBLISH-CDS' => '1,2'
+  meta 'X-TEST' => nil
+
+  default_ttl 300
+
+  rrset 'example.com.', :NS do
+    ttl 86400
+    records(
+      'ns.exapmple.com.',
+      'ns.exapmple.net.',
+    )
+  end
+
+  rrset 'example.com.', :MX do
+    records '10 mx.example.com.'
+  end
+
+  rrset 'mx.example.com.', :A do
+    records(
+      '192.0.2.25',
+    )
+  end
+
+  rrset 'ns.example.com.', :A do
+    records(
+      '192.0.2.53',
+    )
+  end
+
+  rrset 'www.example.com.', :A do
+    records(
+      '192.0.2.1',
+      '192.0.2.3',
+    )
+  end
+
+  rrset 'www.example.com.', :AAAA do
+    records(
+      '2001:db8::1',
+    )
+  end
+end
