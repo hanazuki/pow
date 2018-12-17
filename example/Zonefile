@@ -8,15 +8,15 @@ zone 'example.com.' do
   nsec3narrow true
 
   meta 'PUBLISH-CDS' => '1,2'
-  meta 'X-TEST' => nil
+  meta 'X-TEST' => 'foo'
 
   default_ttl 300
 
   rrset 'example.com.', :NS do
     ttl 86400
     records(
-      'ns.exapmple.com.',
-      'ns.exapmple.net.',
+      'ns.example.com.',
+      'ns.example.net.',
     )
   end
 
